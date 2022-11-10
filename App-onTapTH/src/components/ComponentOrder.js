@@ -28,13 +28,10 @@ const ComponentOrder = ({ route, navigation }) => {
 
     }
     /// so luong SP
-    let soLuong = 1;
-
-
-    // console.log("🚀 ~ file: ComponentOrder.js ~ line 5 ~ ComponentOrder ~ route", route)
+    // let soLuong = 1;
+    const [soLuong, setSoLuong] = useState(1);
 
     let { item } = route.params;
-    // console.log("🚀 ~ file: ComponentOrder.js ~ line 8 ~ ComponentOrder ~ item", item)
     return (
         <View style={[styles.flex_1, {
             backgroundColor: '#fff'
@@ -93,26 +90,26 @@ const ComponentOrder = ({ route, navigation }) => {
                 </View>
 
                 {/*  */}
-                <View   style={[  ,{ }]} >
-                    <Text  style={[  ,{
-                        fontWeight:'bold',
+                <View style={[, {}]} >
+                    <Text style={[, {
+                        fontWeight: 'bold',
                         fontSize: 18,
                         marginTop: 25,
                     }]} >Deliver Address</Text>
-                    <Text  style={[  ,{
+                    <Text style={[, {
                         fontWeight: 'bold',
                         marginTop: 15,
                     }]} >Jl. Kpg Sutoyo</Text>
-                    <Text  style={[  ,{
+                    <Text style={[, {
                         marginTop: 8,
                         opacity: 0.5,
                         fontSize: 12,
                     }]} >Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.</Text>
-                    <View  style={[ styles.row ,{
+                    <View style={[styles.row, {
                         marginTop: 10,
                     }]}  >
-                        <Text  style={[  ,{
-                            fontSize:12,
+                        <Text style={[, {
+                            fontSize: 12,
                             opacity: 0.8,
                             borderRadius: 10,
                             borderWidth: 0.5,
@@ -120,8 +117,8 @@ const ComponentOrder = ({ route, navigation }) => {
                             paddingHorizontal: 8,
                             marginRight: 10,
                         }]} ><IconFontAwesome name='edit' size={12} color={'#000'} /> Edit Address</Text>
-                        <Text  style={[  ,{
-                            fontSize:12,
+                        <Text style={[, {
+                            fontSize: 12,
                             opacity: 0.8,
                             borderRadius: 10,
                             borderWidth: 0.5,
@@ -133,20 +130,25 @@ const ComponentOrder = ({ route, navigation }) => {
                 </View>
 
                 {/*  */}
-                <View   style={[ styles.flex_1, styles.row ,{
+                <View style={[styles.flex_1, styles.row, {
                     marginTop: 20,
-                    borderTopWidth:0.5,
+                    borderTopWidth: 0.5,
                     paddingVertical: 15,
                     alignItems: 'center'
                 }]} >
-                    <Image source={item.img} style ={{width:75, height:75, borderRadius: 15}}/>
-                    <View  style={[ styles.flex_1 ,{marginHorizontal: 10}]} >
-                        <Text  style={[  ,{fontWeight: 'bold'}]} >{item.name}</Text>
-                        <Text  style={[  ,{opacity: 0.5, fontSize: 13, marginTop: 4}]} >with {item.nhaSX}</Text>
+                    <Image source={item.img} style={{ width: 75, height: 75, borderRadius: 15 }} />
+                    <View style={[styles.flex_1, { marginHorizontal: 10 }]} >
+                        <Text style={[, { fontWeight: 'bold' }]} >{item.name}</Text>
+                        <Text style={[, { opacity: 0.5, fontSize: 13, marginTop: 4 }]} >with {item.nhaSX}</Text>
                     </View>
-                    <IconMaterialCommunityIcons name='minus-circle-outline' size={25} color={'#000'}/>
-                    <Text  style={[  ,{padding: 8, fontSize: 16,}]} >{soLuong}</Text>
-                    <IconMaterialIcons name='add-circle-outline' size={25} color={'#000'}/>
+
+                    <TouchableOpacity>
+                        <IconMaterialCommunityIcons name='minus-circle-outline' size={25} color={'#000'} />
+                    </TouchableOpacity>
+                    <Text style={[, { padding: 8, fontSize: 16, }]} >{soLuong}</Text>
+                    <TouchableOpacity>
+                        <IconMaterialIcons name='add-circle-outline' size={25} color={'#000'} />
+                    </TouchableOpacity>
                 </View>
             </View>
             <View style={[, {
@@ -157,11 +159,97 @@ const ComponentOrder = ({ route, navigation }) => {
             }]} >
 
             </View>
-            <View style={[styles.flex_1, {}]} >
+            <View style={[styles.flex_1, {
+                margin: 20,
+            }]} >
+                {/* Footer */}
+                <View style={[styles.row, {
+                    padding: 10,
+                    alignItems: 'center',
+                    borderRadius: 5,
+                    borderWidth: 0.2,
+                }]} >
+                    <IconMaterialCommunityIcons style={[, {}]} name='sale' size={25} color={'#f7992d'} />
+                    <Text style={[styles.flex_1, {
+                        marginHorizontal: 15,
+                        fontWeight: '700',
+                    }]} >1 Discount is Applied</Text>
+                    <IconFontAwesome style={[, {}]} name='angle-right' size={25} color={'#000'} />
+                </View>
+
+                {/*  */}
+                <View style={[, {
+                    marginTop: 20,
+                    marginHorizontal: 20
+                }]} >
+                    <Text style={[, {
+                        fontWeight: 'bold',
+                    }]} >Payment Summary</Text>
+                    <View style={[styles.row, {
+                        marginTop: 15,
+                        justifyContent: 'space-between',
+                    }]} >
+                        <Text style={[, {}]} >Price</Text>
+                        <Text style={[, {
+                            fontWeight: 'bold',
+                        }]} >$ {item.money}</Text>
+                    </View>
+                    <View style={[styles.row, {
+                        marginTop: 15,
+                        justifyContent: 'space-between',
+                    }]} >
+                        <Text style={[, {}]} >Delivery Fee</Text>
+                        <Text style={[, { fontWeight: 'bold', }]} ><Text style={{ textDecorationLine: 'line-through', color: '#636363' }}>$2.0 </Text>$1.0</Text>
+                    </View>
+                    <View style={[styles.row, {
+                        marginTop: 15,
+                        justifyContent: 'space-between',
+                        borderTopWidth: 0.3,
+                        paddingTop: 10,
+                    }]}  >
+                        <Text style={[, {}]} >Total Payment</Text>
+                        <Text style={[, { fontWeight: 'bold' }]} >$ {item.money + 1}</Text>
+                    </View>
+
+
+                </View>
+
+
+                {/*  */}
+                <View>
+                    <View style={[styles.row, {
+                        // justifyContent:'center',
+                        alignItems: 'center',
+                        marginTop: 20,
+                        paddingVertical: 10,
+                    }]} >
+                        <IconMaterialCommunityIcons style={[, {}]} name='cash' size={25} color='#f7992d' />
+                        <View style={[styles.row, { marginLeft: 10, backgroundColor: '#eee', borderRadius: 10, }]} >
+                            <Text style={[styles.colorMenuDS1, { padding: 3, paddingHorizontal: 7, borderRadius: 10, textAlign: 'center' }]}  >Cash</Text>
+                            <Text style={[, { padding: 3, paddingHorizontal: 7, borderRadius: 10, textAlign: 'center', fontSize: 13 }]} >$ {item.money + 1}</Text>
+                        </View>
+                        <View style={styles.flex_1}></View>
+                        <IconMaterialCommunityIcons style={[, {}]} name='dots-horizontal-circle' size={25} color={'gray'} />
+                    </View>
+                    <TouchableOpacity style={[styles.viewCenter, {
+                        backgroundColor: '#f7992d',
+                        marginTop: 15,
+                        marginBottom: 20,
+                        padding: 15,
+                        borderRadius: 10,
+                    }]}
+                        onPress={() => { alert(`Đang cập nhật.`) }}
+                    >
+                        <Text style={[, {
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            fontSize: 20,
+                        }]} >Order</Text>
+                    </TouchableOpacity>
+                </View>
 
             </View>
 
-            <Text>ComponentOrder</Text>
         </View>
     )
 }
