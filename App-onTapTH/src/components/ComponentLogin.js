@@ -5,6 +5,12 @@ import styles from '../themes/styles';
 //  import Icon from 'react-native-vector-icons/FontAwesome'
 //   <Icon name="rocket" color="#eee" size={30} />
 const ComponentLogin = ({navigation}) => {
+    fetch('https://app-json-server-dbcoffee.herokuapp.com/coffee')
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+
+    
+
     return (
         <View style={[styles.flex_1, {
 

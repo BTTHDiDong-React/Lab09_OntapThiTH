@@ -13,10 +13,35 @@ let dbNameCoffee = [
 
 const ComponentHome = ({ navigation }) => {
 
+    ////
+    const getDataBase = () => {
+        fetch('https://app-json-server-dbcoffee.herokuapp.com/coffee')
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("21 ------- ",data);
+                setDb(data)
+
+            })
+            .catch((error) => {
+                console.log("🚀 ~ file: ComponentHome.js ~ line 24 ~ getDataBase ~ error", error)
+            });
+
+            
+    }
+
+
+
+    ///
     const [db, setDb] = useState([])
 
     useEffect(() => {
         setDb(dbCoffeeLocal)
+
+        // getDataBase()
+        // console.log("🚀 ~ file: ComponentHome.js ~ line 43 ~ .then ~ db", db)
+        // for (const val of db) {
+        //     val.linkImg = "https://res.cloudinary.com/dskqmarjx/image/upload/v1668094248/img_coffee_1_pmwwag.jpg"
+        // }
 
     }, [])
 
@@ -31,6 +56,7 @@ const ComponentHome = ({ navigation }) => {
 
     const renderItem = ({ item }) => {
         // console.log("🚀 ~ file: ComponentHome.js ~ line 33 ~ renderItem ~ item", item)
+
         return (
             <View style={[, {
                 width: '47%',
@@ -109,13 +135,15 @@ const ComponentHome = ({ navigation }) => {
                         <Text style={[, { color: '#eee', opacity: 0.5, fontSize: 12 }]}>Location</Text>
                         <Text style={[, { color: '#fff', fontWeight: 'bold', }]}>Bilzen, Tanjungbalai <IconMaterialCommunityIcons name="menu-down" color="#eee" size={20} /></Text>
                     </View>
-                    <IconFontAwesome style={[, {
-                        backgroundColor: '#fff',
-                        padding: 5,
-                        paddingHorizontal: 7,
-                        borderRadius: 10,
-                        alignItems: 'center',
-                    }]} name="user-secret" color="#11f721" size={30} />
+                    <TouchableOpacity onPress={() => getDataBase()} >
+                        <IconFontAwesome style={[, {
+                            backgroundColor: '#fff',
+                            padding: 5,
+                            paddingHorizontal: 7,
+                            borderRadius: 10,
+                            alignItems: 'center',
+                        }]} name="user-secret" color="#11f721" size={30} />
+                    </TouchableOpacity>
                 </View>
 
                 {/* Search */}
@@ -320,7 +348,7 @@ const ComponentHome = ({ navigation }) => {
                      */}
 
                     <FlatList
-                        data={dbCoffeeLocal}
+                        data={db}
                         key={item => item.id}
                         numColumns={2}
                         renderItem={renderItem} />
