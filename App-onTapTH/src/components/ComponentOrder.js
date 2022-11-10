@@ -9,7 +9,9 @@ import styles from '../themes/styles';
 import dbCoffee from '../database/dataLocal'
 
 const ComponentOrder = ({ route, navigation }) => {
-    console.log("🚀 ~ file: ComponentOrder.js ~ line 35 ~ ComponentOrder ~ ComponentOrder")
+    // console.log("🚀 ~ file: ComponentOrder.js ~ line 35 ~ ComponentOrder ~ ComponentOrder")
+    //
+    let { item } = route.params;
 
     //
     const [chooseDeliver, setChooseDeliver] = useState(styles.btnOrder_1);
@@ -31,7 +33,34 @@ const ComponentOrder = ({ route, navigation }) => {
     // let soLuong = 1;
     const [soLuong, setSoLuong] = useState(1);
 
-    let { item } = route.params;
+    const btnMinus = () => {
+        if (soLuong === 1) {
+            setMoneyOrder(item.money);
+            setSoLuong(1);
+
+        }
+        else {
+            let newSoLuong = soLuong - 1;
+
+            setMoneyOrder(item.money * newSoLuong);
+            setSoLuong(newSoLuong);
+        }
+    }
+    const btnPlus = () => {
+        let newSoLuong = soLuong + 1;
+
+        setMoneyOrder(item.money * newSoLuong);
+        setSoLuong(newSoLuong);
+    }
+
+    //
+    const [moneyOrder, setMoneyOrder] = useState(0);
+    useEffect(() => {
+        // add gia tri tien cua sp
+        setMoneyOrder(item.money)
+    }, [])
+
+
     return (
         <View style={[styles.flex_1, {
             backgroundColor: '#fff'
@@ -142,11 +171,11 @@ const ComponentOrder = ({ route, navigation }) => {
                         <Text style={[, { opacity: 0.5, fontSize: 13, marginTop: 4 }]} >with {item.nhaSX}</Text>
                     </View>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => btnMinus()}>
                         <IconMaterialCommunityIcons name='minus-circle-outline' size={25} color={'#000'} />
                     </TouchableOpacity>
                     <Text style={[, { padding: 8, fontSize: 16, }]} >{soLuong}</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => btnPlus()} >
                         <IconMaterialIcons name='add-circle-outline' size={25} color={'#000'} />
                     </TouchableOpacity>
                 </View>
@@ -192,7 +221,7 @@ const ComponentOrder = ({ route, navigation }) => {
                         <Text style={[, {}]} >Price</Text>
                         <Text style={[, {
                             fontWeight: 'bold',
-                        }]} >$ {item.money}</Text>
+                        }]} >$ {moneyOrder}</Text>
                     </View>
                     <View style={[styles.row, {
                         marginTop: 15,
@@ -208,7 +237,7 @@ const ComponentOrder = ({ route, navigation }) => {
                         paddingTop: 10,
                     }]}  >
                         <Text style={[, {}]} >Total Payment</Text>
-                        <Text style={[, { fontWeight: 'bold' }]} >$ {item.money + 1}</Text>
+                        <Text style={[, { fontWeight: 'bold' }]} >$ {moneyOrder + 1}</Text>
                     </View>
 
 
@@ -226,7 +255,7 @@ const ComponentOrder = ({ route, navigation }) => {
                         <IconMaterialCommunityIcons style={[, {}]} name='cash' size={25} color='#f7992d' />
                         <View style={[styles.row, { marginLeft: 10, backgroundColor: '#eee', borderRadius: 10, }]} >
                             <Text style={[styles.colorMenuDS1, { padding: 3, paddingHorizontal: 7, borderRadius: 10, textAlign: 'center' }]}  >Cash</Text>
-                            <Text style={[, { padding: 3, paddingHorizontal: 7, borderRadius: 10, textAlign: 'center', fontSize: 13 }]} >$ {item.money + 1}</Text>
+                            <Text style={[, { padding: 3, paddingHorizontal: 7, borderRadius: 10, textAlign: 'center', fontSize: 13 }]} >$ {moneyOrder + 1}</Text>
                         </View>
                         <View style={styles.flex_1}></View>
                         <IconMaterialCommunityIcons style={[, {}]} name='dots-horizontal-circle' size={25} color={'gray'} />
