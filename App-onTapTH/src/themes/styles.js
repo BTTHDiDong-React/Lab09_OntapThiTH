@@ -13,27 +13,30 @@ export default StyleSheet.create({
     flex_4: {
         flex: 4
     },
+    flex_5: {
+        flex: 5
+    },
     row: {
         flexDirection: "row",
     },
     column: {
         flexDirection: "column",
     },
-    viewCenter:{
-        justifyContent:"center",
-        alignItems:"center"
+    viewCenter: {
+        justifyContent: "center",
+        alignItems: "center"
     },
-    viewCenterTop:{
-        alignItems:"center"
+    viewCenterTop: {
+        alignItems: "center"
     },
 
-    colorMenuDS1:{
-        color:'#fff',
+    colorMenuDS1: {
+        color: '#fff',
         backgroundColor: '#f7992d',
         fontWeight: 'bold',
     },
-    colorMenuDS2:{
-        color:'#000',
+    colorMenuDS2: {
+        color: '#000',
         backgroundColor: '#fff9f2',
     },
     btnOrder_1:
@@ -42,7 +45,20 @@ export default StyleSheet.create({
         color: '#fff',
         backgroundColor: '#f7992d',
         borderRadius: 10,
-    }
+    },
+    btnSize: {
+        padding: 10,
+        textAlign: 'center', 
+        borderRadius: 10,
+        borderWidth: 1, 
+        borderColor: '#eee', 
+        width: 80,
+    },
+    btnSizeClick: {
+        backgroundColor: '#ffded4', 
+        borderColor: '#f7992d', 
+    },
+
 })
 
 
