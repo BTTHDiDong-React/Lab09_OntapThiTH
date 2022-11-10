@@ -41,7 +41,7 @@ const ComponentLogin = ({navigation}) => {
                         backgroundColor: '#fc6232',
                         borderRadius: 10,
                     }]}
-                        onPress={() => navigation.navigate('ComponentItem')}
+                        onPress={() => navigation.navigate('ComponentHome')}
                     >
                         <Text style={[, {
                             fontWeight:'bold',

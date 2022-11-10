@@ -26,6 +26,16 @@ export default StyleSheet.create({
     viewCenterTop:{
         alignItems:"center"
     },
+
+    colorMenuDS1:{
+        color:'#fff',
+        backgroundColor: '#f7992d',
+        fontWeight: 'bold',
+    },
+    colorMenuDS2:{
+        color:'#000',
+        backgroundColor: '#fff9f2',
+    }
 })
 
 

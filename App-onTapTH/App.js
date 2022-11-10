@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'; import { NavigationContai
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ComponentLogin from './src/components/ComponentLogin';
-import ComponentItem from './src/components/ComponentItem';
+import ComponentHome from './src/components/ComponentHome';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +13,7 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="ComponentLogin" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="ComponentLogin" component={ComponentLogin} />
-                <Stack.Screen name="ComponentItem" component={ComponentItem} />
+                <Stack.Screen name="ComponentHome" component={ComponentHome} />
                 {/* <Stack.Screen name="" component={} /> */}
             </Stack.Navigator>
         </NavigationContainer>
