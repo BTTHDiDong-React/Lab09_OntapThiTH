@@ -1,10 +1,11 @@
 import { View, Text, StatusBar, TextInput, ImageBackground, FlatList, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 //   <Icon name="rocket" color="#eee" size={30} />
 
 import styles from '../themes/styles';
+import dbCoffeeLocal from '../database/dataLocal';
 
 let dbNameCoffee = [
     'Cappuccino', 'Machiato', 'Latte', 'Mocha'
@@ -12,13 +13,70 @@ let dbNameCoffee = [
 
 const ComponentHome = ({ navigation }) => {
 
+    const [db, setDb] = useState([])
+    
+    useEffect(() => {
+      setDb(dbCoffeeLocal)
+        
+    }, [])
+    
 
-    let item = {
+    let item1 = {
         id: 1,
         name: 'Cappuccino',
         nhaSX: 'Chocolate',
         img: require('../images/img_coffee_1.jpg'),
         money: 4.52
+    }
+
+    const renderItem = ({item}) => {
+        // console.log("🚀 ~ file: ComponentHome.js ~ line 33 ~ renderItem ~ item", item)
+        return (
+            <View style={[, {
+                width: '47%',
+                backgroundColor: '#fff',
+                marginRight: 20,
+                borderRadius: 10,
+                marginBottom: 15,
+            }]} >
+                <View style={[, {
+                    alignItems: 'center'
+                }]} >
+                    <Image source={item.img} style={[, {
+                        width: "100%",
+                        height: 150,
+                        borderRadius: 10,
+                    }]} />
+                </View>
+                <View style={[, { paddingHorizontal: 15, padding: 10 }]} >
+                    <Text style={[, {
+                        fontSize: 18,
+                        fontWeight: 'bold',
+                    }]}  >{item.name}</Text>
+                    <Text style={[, {
+                        opacity: 0.7,
+                        fontSize: 13
+                    }]} >with {item.nhaSX}</Text>
+                    <View style={[styles.row, {
+                        justifyContent: 'space-between',
+                        marginTop: 10,
+                    }]} >
+                        <Text style={[, {
+                            fontWeight: 'bold'
+                        }]}  >$ {item.money}</Text>
+                        <TouchableOpacity >
+                            <IconFontAwesome style={[, {
+                                padding: 5,
+                                paddingHorizontal: 7,
+                                backgroundColor: '#f7992d',
+                                borderRadius: 5,
+                            }]} name="plus" color="#fff" size={14} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+            </View>
+        )
     }
 
     return (
@@ -159,54 +217,13 @@ const ComponentHome = ({ navigation }) => {
                 </View>
 
                 {/* Grid View */}
-                <View style={[styles.row, {
+                <View style={[, {
                     marginTop: 20,
                     marginHorizontal: 20,
+                    marginBottom: 330
                 }]} >
                     {/* Item */}
-                    <View style={[, {
-                        width: '47%',
-                        backgroundColor: '#fff',
-                        marginRight: 20,
-                        borderRadius: 10,
-                    }]} >
-                        <View style={[, {
-                            alignItems: 'center'
-                        }]} >
-                            <Image source={item.img} style={[, {
-                                width: "100%",
-                                height: 150,
-                                borderRadius: 10,
-                            }]} />
-                        </View>
-                        <View style={[, { paddingHorizontal: 15, padding: 10 }]} >
-                            <Text style={[, {
-                                fontSize: 18,
-                                fontWeight: 'bold',
-                            }]}  >{item.name}</Text>
-                            <Text style={[, {
-                                opacity: 0.7,
-                                fontSize: 13
-                            }]} >with {item.nhaSX}</Text>
-                            <View   style={[ styles.row ,{
-                                justifyContent:'space-between',
-                                marginTop: 10,
-                            }]} >
-                                <Text style={[, {
-                                    fontWeight: 'bold'
-                                }]}  >$ {item.money}</Text>
-                                <TouchableOpacity > 
-                                <IconFontAwesome style={[, {
-                                    padding: 5,
-                                    paddingHorizontal: 7,
-                                    backgroundColor: '#f7992d',
-                                    borderRadius: 5,
-                                }]} name="plus" color="#fff" size={14} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-
-                    </View>
+                    {/*                     
                     <View style={[, {
                         width: '47%',
                         backgroundColor: '#fff',
@@ -251,12 +268,60 @@ const ComponentHome = ({ navigation }) => {
 
                     </View>
                     
-                    
+                    <View style={[, {
+                        width: '47%',
+                        backgroundColor: '#fff',
+                        marginRight: 20,
+                        borderRadius: 10,
+                    }]} >
+                        <View style={[, {
+                            alignItems: 'center'
+                        }]} >
+                            <Image source={item.img} style={[, {
+                                width: "100%",
+                                height: 150,
+                                borderRadius: 10,
+                            }]} />
+                        </View>
+                        <View style={[, { paddingHorizontal: 15, padding: 10 }]} >
+                            <Text style={[, {
+                                fontSize: 18,
+                                fontWeight: 'bold',
+                            }]}  >{item.name}</Text>
+                            <Text style={[, {
+                                opacity: 0.7,
+                                fontSize: 13
+                            }]} >with {item.nhaSX}</Text>
+                            <View   style={[ styles.row ,{
+                                justifyContent:'space-between',
+                                marginTop: 10,
+                            }]} >
+                                <Text style={[, {
+                                    fontWeight: 'bold'
+                                }]}  >$ {item.money}</Text>
+                                <TouchableOpacity > 
+                                <IconFontAwesome style={[, {
+                                    padding: 5,
+                                    paddingHorizontal: 7,
+                                    backgroundColor: '#f7992d',
+                                    borderRadius: 5,
+                                }]} name="plus" color="#fff" size={14} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                    </View>
+                     */}
+
+                    <FlatList
+                        data={dbCoffeeLocal}
+                        key={item => item.id}
+                        numColumns={2}
+                        renderItem={renderItem} />
                 </View>
 
             </View>
 
-            <Text>ComponentHome</Text>
         </View>
     )
 }
