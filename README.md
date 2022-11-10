@@ -15,3 +15,6 @@
 
 #### Ảnh man hinh Order
 <img src="./AnhMinhHoa/screen_order.png" alt="Không tồn tại" width="300" >
+
+#### Ảnh man hinh Order
+<img src="./AnhMinhHoa/screen_detail.png" alt="Không tồn tại" width="300" >

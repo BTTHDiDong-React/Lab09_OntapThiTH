@@ -14,12 +14,12 @@ let dbNameCoffee = [
 const ComponentHome = ({ navigation }) => {
 
     const [db, setDb] = useState([])
-    
+
     useEffect(() => {
-      setDb(dbCoffeeLocal)
-        
+        setDb(dbCoffeeLocal)
+
     }, [])
-    
+
 
     let item1 = {
         id: 1,
@@ -29,7 +29,7 @@ const ComponentHome = ({ navigation }) => {
         money: 4.52
     }
 
-    const renderItem = ({item}) => {
+    const renderItem = ({ item }) => {
         // console.log("🚀 ~ file: ComponentHome.js ~ line 33 ~ renderItem ~ item", item)
         return (
             <View style={[, {
@@ -49,10 +49,14 @@ const ComponentHome = ({ navigation }) => {
                     }]} />
                 </View>
                 <View style={[, { paddingHorizontal: 15, padding: 10 }]} >
-                    <Text style={[, {
-                        fontSize: 18,
-                        fontWeight: 'bold',
-                    }]}  >{item.name}</Text>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('ComponentDetail', { item: item })}
+                    >
+                        <Text style={[, {
+                            fontSize: 18,
+                            fontWeight: 'bold',
+                        }]}  >{item.name}</Text>
+                    </TouchableOpacity>
                     <Text style={[, {
                         opacity: 0.7,
                         fontSize: 13
@@ -64,8 +68,8 @@ const ComponentHome = ({ navigation }) => {
                         <Text style={[, {
                             fontWeight: 'bold'
                         }]}  >$ {item.money}</Text>
-                        <TouchableOpacity 
-                            onPress={() => navigation.navigate('ComponentOrder', {item: item})}
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('ComponentOrder', { item: item })}
                         >
                             <IconFontAwesome style={[, {
                                 padding: 5,
