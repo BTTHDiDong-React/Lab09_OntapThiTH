@@ -35,6 +35,13 @@ export default StyleSheet.create({
     colorMenuDS2:{
         color:'#000',
         backgroundColor: '#fff9f2',
+    },
+    btnOrder_1:
+    {
+        fontWeight: 'bold',
+        color: '#fff',
+        backgroundColor: '#f7992d',
+        borderRadius: 10,
     }
 })
 
