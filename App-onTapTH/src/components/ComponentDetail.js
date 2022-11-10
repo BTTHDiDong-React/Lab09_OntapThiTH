@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome'
 import IconMaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 //   <Icon name="rocket" color="#eee" size={30} />
@@ -8,7 +8,12 @@ import dbCoffeeLocal from '../database/dataLocal';
 import styles from '../themes/styles';
 
 const ComponentDetail = ({ navigation, route }) => {
-    console.log("🚀 ~ file: ComponentDetail.js ~ line 5 ~ ComponentDetail ~ 😜😜😜😜😜",)
+    // console.log("🚀 ~ file: ComponentDetail.js ~ line 5 ~ ComponentDetail ~ 😜😜😜😜😜",)
+
+    // sk button Size
+    const [btnSize, setBtnSize] = useState(1)  // 0 : S || 1 : M || 2 : L
+
+    //
 
     let { item } = route.params;
     return (
@@ -59,14 +64,14 @@ const ComponentDetail = ({ navigation, route }) => {
                 <Text style={[  ,{fontWeight: 'bold', marginTop: 15,}]}>Size</Text>
 
                 <View style={[ styles.row ,{marginTop: 10, justifyContent: 'space-around'}]}>
-                    <TouchableOpacity >
-                        <Text  style={[ styles.btnSize ,{}]}>S</Text>
+                    <TouchableOpacity onPress={() => { setBtnSize(0)}}>
+                        <Text  style={[ styles.btnSize, btnSize === 0? styles.btnSizeClick:null  ,{}]}>S</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity >
-                        <Text  style={[ styles.btnSize ,{}]}>M</Text>
+                    <TouchableOpacity onPress={() => { setBtnSize(1)}}>
+                        <Text  style={[ styles.btnSize, btnSize === 1? styles.btnSizeClick:null  ,{}]}>M</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity >
-                        <Text  style={[ styles.btnSize, styles.btnSizeClick ,{}]}>L</Text>
+                    <TouchableOpacity onPress={() => { setBtnSize(2)}}>
+                        <Text  style={[ styles.btnSize, btnSize === 2? styles.btnSizeClick:null  ,{}]}>L</Text>
                     </TouchableOpacity>
                 </View>
             </View>
