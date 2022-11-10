@@ -64,7 +64,9 @@ const ComponentHome = ({ navigation }) => {
                         <Text style={[, {
                             fontWeight: 'bold'
                         }]}  >$ {item.money}</Text>
-                        <TouchableOpacity >
+                        <TouchableOpacity 
+                            onPress={() => navigation.navigate('ComponentOrder', {item: item})}
+                        >
                             <IconFontAwesome style={[, {
                                 padding: 5,
                                 paddingHorizontal: 7,
