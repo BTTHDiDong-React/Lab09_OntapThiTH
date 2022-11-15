@@ -4,6 +4,7 @@ let item_z = {
     start: 4.6,
     price: 65,
     review: 26,
+    imgURL:'../images/img_coffee_1.jpg',
 }
 
 
