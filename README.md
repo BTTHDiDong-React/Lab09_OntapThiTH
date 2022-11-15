@@ -21,3 +21,12 @@
 
 
 ## AppOnthiTH
+#### Ảnh man hinh login
+<img src="./AnhMinhHoa/app2_login.png" alt="Không tồn tại" width="300" >
+
+#### Ảnh man hinh Home
+<img src="./AnhMinhHoa/app2_home.png" alt="Không tồn tại" width="300" >
+
+#### Ảnh man hinh Order
+<img src="./AnhMinhHoa/app2_payment.png" alt="Không tồn tại" width="300" >
+
